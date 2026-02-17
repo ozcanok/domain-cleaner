@@ -1,0 +1,8 @@
+.claude/
+.DS_Store
+Thumbs.db
+*.crx
+*.pem
+*.zip
+node_modules/
+.env

@@ -1,0 +1,66 @@
+{
+  "manifest_version": 3,
+  "name": "Domain Cleaner",
+  "description": "Clear cache, cookies and site data for the active tab's domain. Supports presets and keyboard shortcuts.",
+  "version": "1.8.0",
+  "permissions": [
+    "tabs",
+    "storage",
+    "browsingData",
+    "cookies",
+    "scripting",
+    "clipboardWrite",
+    "contextMenus",
+    "notifications",
+    "history"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_title": "Domain Cleaner",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "cache_cookies_clean": {
+      "suggested_key": {
+        "default": "Alt+Shift+C"
+      },
+      "description": "Cache & Cookies"
+    },
+    "deep_clean": {
+      "suggested_key": {
+        "default": "Alt+Shift+D"
+      },
+      "description": "Deep Clean"
+    },
+    "open_in_incognito": {
+      "suggested_key": {
+        "default": "Alt+Shift+I"
+      },
+      "description": "Open in Incognito"
+    },
+    "clear_domain_history": {
+      "suggested_key": {
+        "default": "Alt+Shift+H"
+      },
+      "description": "Clear Domain History"
+    }
+  }
+}
+

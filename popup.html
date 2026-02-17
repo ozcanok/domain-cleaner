@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="docTitle">Domain Cleaner</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <svg width="0" height="0" style="position:absolute;left:-9999px;overflow:hidden" aria-hidden="true" focusable="false">
+      <symbol id="i-database" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 6a8 3 0 1 0 16 0A8 3 0 1 0 4 6"/><path d="M4 6v6a8 3 0 0 0 16 0V6"/><path d="M4 12v6a8 3 0 0 0 16 0v-6"/></g>
+      </symbol>
+      <symbol id="i-hard-drive" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zm0 9h18M8 21h8m-6-4l-.5 4m4.5-4l.5 4"/>
+      </symbol>
+      <symbol id="i-circle-dot" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 13v.01M12 17v.01M12 12v.01M16 14v.01M11 8v.01m2.148-4.534l2.667 1.104a4 4 0 0 0 4.656 6.14l.053.132a3 3 0 0 1 0 2.296Q19.779 14.328 19.5 15q-.283.684-.66 2.216a3 3 0 0 1-1.624 1.623q-1.572.394-2.216.661q-.712.295-1.852 1.024a3 3 0 0 1-2.296 0Q9.649 19.77 9 19.5q-.707-.292-2.216-.66a3 3 0 0 1-1.623-1.624Q4.764 15.639 4.5 15q-.298-.718-1.024-1.852a3 3 0 0 1 0-2.296Q4.195 9.736 4.5 9q.257-.62.66-2.216a3 3 0 0 1 1.624-1.623Q8.331 4.777 9 4.5q.687-.285 1.852-1.024a3 3 0 0 1 2.296 0"/>
+      </symbol>
+      <symbol id="i-cog" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37c1 .608 2.296.07 2.572-1.065"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0-6 0"/></g>
+      </symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 11A8.1 8.1 0 0 0 4.5 9M4 5v4h4m-4 4a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"/>
+      </symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 3a12 12 0 0 0 8.5 3A12 12 0 0 1 12 21A12 12 0 0 1 3.5 6A12 12 0 0 0 12 3"/><path d="M11 11a1 1 0 1 0 2 0a1 1 0 1 0-2 0m1 1v2.5"/></g>
+      </symbol>
+      <symbol id="i-keyboard" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8H4zm2 3h.01M9 11h.01M12 11h.01M15 11h.01M18 11h.01M7 14h10" />
+      </symbol>
+      <symbol id="i-logout" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2v-2M15 12H4m0 0 3-3m-3 3 3 3" />
+      </symbol>
+      <symbol id="i-history" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9a9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5m4-1v5l4 2"/></g>
+      </symbol>
+    </svg>
+    <main class="container">
+      <header class="header">
+        <div class="header-top">
+          <h1 id="appTitle"><img src="icons/icon-32.png" alt="" class="app-logo" /><span id="appTitleText">Domain Cleaner</span></h1>
+          <div class="header-actions">
+              <span id="preview" class="preview" aria-live="polite">Preview is being calculated...</span>
+              <button id="incognitoBtn" class="icon-btn" title="Aktif URL'yi gizli pencerede aç" aria-label="Aktif URL'yi gizli pencerede aç">
+                <img src="icons/incognito.svg" alt="" />
+              </button>
+              <button id="settingsBtn" class="icon-btn" title="Settings" aria-label="Settings">
+                <svg class="icon-btn-svg" aria-hidden="true"><use href="#i-cog"></use></svg>
+              </button>
+          </div>
+        </div>
+        <div class="header-sub">
+          <p id="siteInfo" class="site-info">Aktif sekme okunuyor...</p>
+          <p id="logoutLegend" class="logout-legend"><svg class="option-warn-icon" aria-hidden="true"><use href="#i-logout"></use></svg><span data-i18n-logout-hint>Can log out</span></p>
+        </div>
+      </header>
+
+      <!-- Preset Buttons -->
+      <section class="presets">
+        <button id="presetCacheCookies" class="preset-btn" data-preset="cacheCookies"><span id="presetCacheCookiesLabel">Cache & Cookies</span></button>
+        <button id="presetDeep" class="preset-btn" data-preset="deep"><span id="presetDeepLabel">Deep Clean</span></button>
+      </section>
+
+      <!-- Cleanup Options -->
+      <section id="optionsSection" class="options" aria-label="Cleanup options">
+        <label class="option-item compact">
+          <input type="checkbox" data-key="cache" checked />
+          <span class="option-copy">
+            <span class="option-title"><span class="option-label" data-i18n-option-label="cache"><svg class="icon-emoji" aria-hidden="true"><use href="#i-hard-drive"></use></svg><span class="option-label-text">Cache</span></span></span>
+            <span class="option-desc" data-i18n-option-desc="cache">Cached files & offline data</span>
+          </span>
+        </label>
+        <label class="option-item compact">
+          <input type="checkbox" data-key="cookies" />
+          <span class="option-copy">
+            <span class="option-title"><span class="option-label" data-i18n-option-label="cookies"><svg class="icon-emoji" aria-hidden="true"><use href="#i-circle-dot"></use></svg><span class="option-label-text">Cookies</span></span><span class="option-warn" title="Can log out"><svg class="option-warn-icon" aria-hidden="true"><use href="#i-logout"></use></svg></span></span>
+            <span class="option-desc" data-i18n-option-desc="cookies">Session & auth cookies</span>
+          </span>
+        </label>
+        <label class="option-item compact">
+          <input type="checkbox" data-key="history" />
+          <span class="option-copy">
+            <span class="option-title"><span class="option-label" data-i18n-option-label="history"><svg class="icon-emoji" aria-hidden="true"><use href="#i-history"></use></svg><span class="option-label-text">History</span></span></span>
+            <span class="option-desc" data-i18n-option-desc="history">History, downloads & forms</span>
+          </span>
+        </label>
+        <label class="option-item compact">
+          <input type="checkbox" data-key="siteStorage" />
+          <span class="option-copy">
+            <span class="option-title"><span class="option-label" data-i18n-option-label="siteStorage"><svg class="icon-emoji" aria-hidden="true"><use href="#i-database"></use></svg><span class="option-label-text">Site Storage</span></span><span class="option-warn" title="Can log out"><svg class="option-warn-icon" aria-hidden="true"><use href="#i-logout"></use></svg></span></span>
+            <span class="option-desc" data-i18n-option-desc="siteStorage">Local storage & databases</span>
+          </span>
+        </label>
+      </section>
+
+      <section class="actions">
+        <button id="clearAndReloadBtn" class="accent"><svg class="btn-icon" aria-hidden="true"><use href="#i-refresh"></use></svg><span id="clearAndReloadLabel">Clear + Reload</span></button>
+        <div class="hsts-wrapper">
+          <button id="siteDataBtn" class="ghost utility-btn hsts-btn"><svg class="btn-icon" aria-hidden="true"><use href="#i-shield"></use></svg><span id="siteDataBtnLabel">Clear HSTS Record (Open)</span></button>
+          <p id="hstsHint" class="hsts-hint">Copies domain to clipboard. On the opened page, scroll to 'Delete domain security policies', paste and click Delete.</p>
+        </div>
+      </section>
+
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+      <p id="counter" class="counter" aria-live="polite">No cleanup has been run yet.</p>
+    </main>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal-overlay" hidden>
+      <div class="modal-box settings-modal">
+        <div class="settings-header">
+          <span id="settingsTitle" class="settings-title">Settings</span>
+          <button id="settingsClose" class="settings-close" aria-label="Close">&times;</button>
+        </div>
+        <div class="settings-body">
+          <div class="settings-row">
+            <span class="settings-row-label" id="languageLabel">Language</span>
+            <div id="languageSelect" class="custom-select" role="listbox" aria-label="Language">
+              <button class="custom-select-toggle" type="button" aria-haspopup="listbox">
+                <span class="custom-select-text">English</span>
+                <svg class="custom-select-arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <ul class="custom-select-menu" hidden></ul>
+            </div>
+          </div>
+          <button id="shortcutsBtn" class="settings-action-btn"><svg class="btn-icon" aria-hidden="true"><use href="#i-keyboard"></use></svg><span id="shortcutsBtnLabel">Shortcuts</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deep Clean Confirmation Modal -->
+    <div id="deepCleanModal" class="modal-overlay" hidden>
+      <div class="modal-box">
+        <p id="deepCleanWarning" class="modal-warning">All data for this domain will be deleted:</p>
+        <ul id="deepCleanList" class="modal-list">
+          <li data-i18n-deep="cache">Cache & offline data</li>
+          <li data-i18n-deep="cookies">All cookies (logs you out)</li>
+          <li data-i18n-deep="storage">Local storage, databases</li>
+          <li data-i18n-deep="history">History & form data</li>
+          <li data-i18n-deep="technical">Service workers & technical data</li>
+        </ul>
+        <div class="modal-actions">
+          <button id="deepCleanConfirm" class="modal-btn modal-btn-confirm">Yes, clean all</button>
+          <button id="deepCleanCancel" class="modal-btn modal-btn-cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="i18n.js"></script>
+    <script src="utils.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
+
