@@ -8,7 +8,7 @@
 // Import dependencies
 importScripts('config.js', 'utils.js');
 
-// Background-specific i18n (minimal)
+// Background-specific i18n
 const BG_I18N = {
   en: {
     httpOnly: "Works only on http/https pages.",
@@ -29,6 +29,69 @@ const BG_I18N = {
     ctxClearHistory: "Domain Geçmişini Temizle",
     notifCleaned: "{domain} temizlendi",
     notifHistoryCleared: "{domain} geçmişi temizlendi"
+  },
+  es: {
+    ctxParent: "Domain Cleaner",
+    ctxCacheCookies: "Caché & Cookies",
+    ctxDeep: "Limpieza profunda",
+    ctxIncognito: "Abrir en incógnito",
+    ctxClearHistory: "Borrar historial del dominio",
+    notifCleaned: "{domain} limpiado",
+    notifHistoryCleared: "Historial borrado para {domain}"
+  },
+  de: {
+    ctxParent: "Domain Cleaner",
+    ctxCacheCookies: "Cache & Cookies",
+    ctxDeep: "Tiefenreinigung",
+    ctxIncognito: "In Inkognito öffnen",
+    ctxClearHistory: "Domain-Verlauf löschen",
+    notifCleaned: "{domain} bereinigt",
+    notifHistoryCleared: "Verlauf gelöscht für {domain}"
+  },
+  fr: {
+    ctxParent: "Domain Cleaner",
+    ctxCacheCookies: "Cache & Cookies",
+    ctxDeep: "Nettoyage profond",
+    ctxIncognito: "Ouvrir en navigation privée",
+    ctxClearHistory: "Effacer l'historique du domaine",
+    notifCleaned: "{domain} nettoyé",
+    notifHistoryCleared: "Historique effacé pour {domain}"
+  },
+  pt: {
+    ctxParent: "Domain Cleaner",
+    ctxCacheCookies: "Cache & Cookies",
+    ctxDeep: "Limpeza profunda",
+    ctxIncognito: "Abrir em anônimo",
+    ctxClearHistory: "Limpar histórico do domínio",
+    notifCleaned: "{domain} limpo",
+    notifHistoryCleared: "Histórico limpo para {domain}"
+  },
+  ru: {
+    ctxParent: "Domain Cleaner",
+    ctxCacheCookies: "Кэш и Cookie",
+    ctxDeep: "Глубокая очистка",
+    ctxIncognito: "Открыть в инкогнито",
+    ctxClearHistory: "Очистить историю домена",
+    notifCleaned: "{domain} очищен",
+    notifHistoryCleared: "История очищена для {domain}"
+  },
+  ja: {
+    ctxParent: "Domain Cleaner",
+    ctxCacheCookies: "キャッシュ & Cookie",
+    ctxDeep: "ディープクリーン",
+    ctxIncognito: "シークレットで開く",
+    ctxClearHistory: "ドメイン履歴を削除",
+    notifCleaned: "{domain} をクリア済み",
+    notifHistoryCleared: "{domain} の履歴を削除済み"
+  },
+  zh: {
+    ctxParent: "Domain Cleaner",
+    ctxCacheCookies: "缓存 & Cookie",
+    ctxDeep: "深度清理",
+    ctxIncognito: "在无痕窗口中打开",
+    ctxClearHistory: "清除域名历史",
+    notifCleaned: "已清理 {domain}",
+    notifHistoryCleared: "已清除 {domain} 的历史记录"
   }
 };
 
@@ -36,7 +99,7 @@ async function getLanguageCode() {
   try {
     const result = await chrome.storage.local.get(UI_LANGUAGE_KEY);
     const setting = String(result?.[UI_LANGUAGE_KEY] || "auto").toLowerCase();
-    if (setting === "tr" || setting === "en") {
+    if (SUPPORTED_LANGUAGES.includes(setting)) {
       return setting;
     }
   } catch (_) {
@@ -46,7 +109,8 @@ async function getLanguageCode() {
   const uiLanguage = typeof chrome.i18n?.getUILanguage === "function"
     ? chrome.i18n.getUILanguage()
     : "en";
-  return String(uiLanguage).toLowerCase().startsWith("tr") ? "tr" : "en";
+  const prefix = String(uiLanguage).toLowerCase().split("-")[0].split("_")[0];
+  return SUPPORTED_LANGUAGES.includes(prefix) ? prefix : "en";
 }
 
 async function t(key, vars = {}) {

@@ -1,0 +1,8 @@
+{
+  "appName": {
+    "message": "Domain Cleaner"
+  },
+  "appDesc": {
+    "message": "Clear cache, cookies and site data for the active tab's domain. Supports presets and keyboard shortcuts."
+  }
+}

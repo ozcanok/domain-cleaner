@@ -1,0 +1,8 @@
+{
+  "appName": {
+    "message": "Domain Cleaner"
+  },
+  "appDesc": {
+    "message": "Cache, Cookies und Website-Daten für die Domain des aktiven Tabs löschen. Unterstützt Voreinstellungen und Tastenkürzel."
+  }
+}

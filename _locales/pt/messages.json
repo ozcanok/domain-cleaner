@@ -1,0 +1,8 @@
+{
+  "appName": {
+    "message": "Domain Cleaner"
+  },
+  "appDesc": {
+    "message": "Limpe cache, cookies e dados do site para o domínio da aba ativa. Suporta predefinições e atalhos de teclado."
+  }
+}

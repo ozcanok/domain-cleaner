@@ -1,0 +1,8 @@
+{
+  "appName": {
+    "message": "Domain Cleaner"
+  },
+  "appDesc": {
+    "message": "Limpia caché, cookies y datos del sitio para el dominio de la pestaña activa. Soporta preajustes y atajos de teclado."
+  }
+}

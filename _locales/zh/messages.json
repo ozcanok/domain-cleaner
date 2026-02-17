@@ -1,0 +1,8 @@
+{
+  "appName": {
+    "message": "Domain Cleaner"
+  },
+  "appDesc": {
+    "message": "清除活动标签页域名的缓存、Cookie和站点数据。支持预设和键盘快捷键。"
+  }
+}
