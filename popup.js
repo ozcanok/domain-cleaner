@@ -977,14 +977,11 @@ async function refreshPreview() {
   ui.preview.textContent = t("previewLoading");
 
   try {
-    const scope = await getResetScope();
-    const selectedKeys = getSelectedKeys();
+    const scope = getResetScope();
 
     const [usageBytes, cookieCount] = await Promise.all([
       measureUsageForTabs(scope.measureTabIds),
-      selectedKeys.includes("cookies")
-        ? countCookiesForHostnames(scope.hostnames)
-        : Promise.resolve(0)
+      countCookiesForHostnames(scope.hostnames)
     ]);
 
     if (requestId !== previewRequestId) {
